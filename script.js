@@ -65,26 +65,23 @@ function renderContact(content) {
   }
 }
 
-async function renderHome() {
-  const content = await loadTextMap(
-    {
+const PAGE_CONFIGS = {
+  home: {
+    files: {
       pageTitle: "texts/home/page-title.txt",
       intro1: "texts/home/intro-1.txt",
       intro2: "texts/home/intro-2.txt",
     },
-    {
+    defaults: {
       pageTitle: "Tervetuloa",
       intro1: "",
       intro2: "",
     },
-  );
-  setText("content-page-title", content.pageTitle);
-  renderParagraphs("intro-text", [content.intro1, content.intro2]);
-}
-
-async function renderAbout() {
-  const about = await loadTextMap(
-    {
+    textTargets: [["content-page-title", "pageTitle"]],
+    paragraphTargets: [["intro-text", ["intro1", "intro2"]]],
+  },
+  about: {
+    files: {
       pageTitle: "texts/about/page-title.txt",
       intro1: "texts/about/intro-1.txt",
       intro2: "texts/about/intro-2.txt",
@@ -92,7 +89,7 @@ async function renderAbout() {
       history1: "texts/about/history-1.txt",
       history2: "texts/about/history-2.txt",
     },
-    {
+    defaults: {
       pageTitle: "Tausta ja työote",
       intro1: "",
       intro2: "",
@@ -100,16 +97,17 @@ async function renderAbout() {
       history1: "",
       history2: "",
     },
-  );
-  setText("content-page-title", about.pageTitle);
-  setText("about-history-title", about.historyTitle);
-  renderParagraphs("intro-text", [about.intro1, about.intro2]);
-  renderParagraphs("about-history-text", [about.history1, about.history2]);
-}
-
-async function renderContactPage() {
-  const contact = await loadTextMap(
-    {
+    textTargets: [
+      ["content-page-title", "pageTitle"],
+      ["about-history-title", "historyTitle"],
+    ],
+    paragraphTargets: [
+      ["intro-text", ["intro1", "intro2"]],
+      ["about-history-text", ["history1", "history2"]],
+    ],
+  },
+  contact: {
+    files: {
       pageTitle: "texts/contact/page-title.txt",
       intro1: "texts/contact/intro-1.txt",
       intro2: "texts/contact/intro-2.txt",
@@ -120,7 +118,7 @@ async function renderContactPage() {
       phoneDisplay: "texts/contact/phone-display.txt",
       phoneIntl: "texts/contact/phone-intl.txt",
     },
-    {
+    defaults: {
       pageTitle: "Ota yhteyttä",
       intro1: "",
       intro2: "",
@@ -131,11 +129,30 @@ async function renderContactPage() {
       phoneDisplay: "",
       phoneIntl: "",
     },
-  );
-  setText("content-page-title", contact.pageTitle);
-  renderParagraphs("intro-text", [contact.intro1, contact.intro2]);
+    textTargets: [["content-page-title", "pageTitle"]],
+    paragraphTargets: [["intro-text", ["intro1", "intro2"]]],
+    hasContact: true,
+  },
+};
 
-  renderContact(contact);
+async function renderPageContent(page) {
+  const config = PAGE_CONFIGS[page] || PAGE_CONFIGS.home;
+  const content = await loadTextMap(config.files, config.defaults);
+
+  for (const [id, key] of config.textTargets || []) {
+    setText(id, content[key]);
+  }
+
+  for (const [containerId, keys] of config.paragraphTargets || []) {
+    renderParagraphs(
+      containerId,
+      keys.map((key) => content[key]),
+    );
+  }
+
+  if (config.hasContact) {
+    renderContact(content);
+  }
 }
 
 async function renderSharedHero() {
@@ -173,15 +190,12 @@ async function initPage() {
   try {
     await renderSharedHero();
     const page = document.body.dataset.page || "home";
-    if (page === "about") {
-      await renderAbout();
-    } else if (page === "contact") {
-      await renderContactPage();
-    } else {
-      await renderHome();
-    }
+    await renderPageContent(page);
   } catch (error) {
     renderFallback();
+  } finally {
+    document.body.classList.remove("content-loading");
+    document.body.classList.add("content-ready");
   }
 }
 

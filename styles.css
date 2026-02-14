@@ -90,6 +90,15 @@ body {
   margin-top: 2.7rem;
 }
 
+.content-loading .content {
+  opacity: 0;
+}
+
+.content-ready .content {
+  opacity: 1;
+  transition: opacity 140ms ease;
+}
+
 .content-page-title {
   margin: 0 0 1.25rem;
   font-family: "Fraunces", "Times New Roman", Times, serif;
