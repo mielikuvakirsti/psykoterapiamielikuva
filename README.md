@@ -1,18 +1,18 @@
-# Website Update Guide (Kirsti)
+# Sivuston paivitysohje (Kirsti)
 
 Muokkaa vain `tekstit/`-kansion tiedostoja.
 
-## Miten paivitat tekstit
+## Miten paivitat teksteja
 
-1. Open this repository on GitHub.
-2. Open the `tekstit/` folder.
-3. Click the file you want to change.
-4. Click the pencil icon (`Edit this file`).
-5. Edit the text.
-6. Click `Commit changes...`.
-7. Wait 1-2 minutes and refresh the website.
+1. Avaa tama repositorio GitHubissa.
+2. Avaa kansio `tekstit/`.
+3. Avaa tiedosto, jota haluat muokata.
+4. Paina kynakuvaketta (`Edit this file`).
+5. Muokkaa teksti.
+6. Paina `Commit changes...`.
+7. Odota 1-2 minuuttia ja paivita sivu selaimessa.
 
-## Mitä tiedostoa muokata
+## Mita tiedostoa muokata
 
 - `tekstit/vasen-palsta/`: vasemman palstan otsikot (kuvan yhteydessa)
 - `tekstit/etusivu/`: etusivun oikean palstan tekstit
@@ -22,5 +22,5 @@ Muokkaa vain `tekstit/`-kansion tiedostoja.
 
 ## Tarkeaa
 
-- Do not edit `index.html`, `about.html`, `contact.html`, `script.js`, or `styles.css`.
-- Keep files as plain text.
+- Ala muokkaa tiedostoja `index.html`, `about.html`, `contact.html`, `script.js` tai `styles.css`.
+- Pida tiedostot tavallisena tekstina (plain text).
