@@ -160,23 +160,15 @@ async function renderSharedHero() {
     {
       companyName: "texts/shared-hero/title.txt",
       subtitle: "texts/shared-hero/subtitle.txt",
-      image: "texts/shared-hero/image.txt",
     },
     {
       companyName: "PSYKOTERAPIA MIELIKUVA",
       subtitle: "Psykoterapiapalvelut",
-      image: "kuva.jpg",
     },
   );
 
   setText("company-name", hero.companyName);
   setText("page-subtitle", hero.subtitle);
-  const image = document.getElementById("hero-image");
-  if (image && hero.image) {
-    const current = new URL(image.getAttribute("src") || "", window.location.href).href;
-    const next = new URL(hero.image, window.location.href).href;
-    if (current !== next) image.src = hero.image;
-  }
 }
 
 function renderFallback() {

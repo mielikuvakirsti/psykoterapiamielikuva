@@ -17,7 +17,7 @@ Only edit files inside the `texts/` folder.
 - `texts/home/`: Etusivu text
 - `texts/about/`: Tausta text
 - `texts/contact/`: Yhteystiedot text
-- `texts/shared-hero/`: Left-side title, subtitle, and image name
+- `texts/shared-hero/`: Left-side title and subtitle
 
 ## Important
 
