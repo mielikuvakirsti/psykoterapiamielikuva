@@ -68,9 +68,9 @@ function renderContact(content) {
 const PAGE_CONFIGS = {
   home: {
     files: {
-      pageTitle: "texts/home/page-title.txt",
-      intro1: "texts/home/intro-1.txt",
-      intro2: "texts/home/intro-2.txt",
+      pageTitle: "tekstit/etusivu/01-sivun-otsikko.txt",
+      intro1: "tekstit/etusivu/02-kappale-1.txt",
+      intro2: "tekstit/etusivu/03-kappale-2.txt",
     },
     defaults: {
       pageTitle: "Tervetuloa",
@@ -82,12 +82,12 @@ const PAGE_CONFIGS = {
   },
   about: {
     files: {
-      pageTitle: "texts/about/page-title.txt",
-      intro1: "texts/about/intro-1.txt",
-      intro2: "texts/about/intro-2.txt",
-      historyTitle: "texts/about/history-title.txt",
-      history1: "texts/about/history-1.txt",
-      history2: "texts/about/history-2.txt",
+      pageTitle: "tekstit/tietoa/01-sivun-otsikko.txt",
+      intro1: "tekstit/tietoa/02-kappale-1.txt",
+      intro2: "tekstit/tietoa/03-kappale-2.txt",
+      historyTitle: "tekstit/tietoa/04-osion-otsikko.txt",
+      history1: "tekstit/tietoa/05-kappale-3.txt",
+      history2: "tekstit/tietoa/06-kappale-4.txt",
     },
     defaults: {
       pageTitle: "Tausta ja työote",
@@ -108,15 +108,15 @@ const PAGE_CONFIGS = {
   },
   contact: {
     files: {
-      pageTitle: "texts/contact/page-title.txt",
-      intro1: "texts/contact/intro-1.txt",
-      intro2: "texts/contact/intro-2.txt",
-      street: "texts/contact/street.txt",
-      postalCity: "texts/contact/postal-city.txt",
-      openingHours: "texts/contact/opening-hours.txt",
-      email: "texts/contact/email.txt",
-      phoneDisplay: "texts/contact/phone-display.txt",
-      phoneIntl: "texts/contact/phone-intl.txt",
+      pageTitle: "tekstit/yhteystiedot/01-sivun-otsikko.txt",
+      intro1: "tekstit/yhteystiedot/02-kappale-1.txt",
+      intro2: "tekstit/yhteystiedot/03-kappale-2.txt",
+      street: "tekstit/yhteystiedot/04-katuosoite.txt",
+      postalCity: "tekstit/yhteystiedot/05-postinumero-ja-kaupunki.txt",
+      openingHours: "tekstit/yhteystiedot/06-ajanvaraus.txt",
+      email: "tekstit/yhteystiedot/07-sahkoposti.txt",
+      phoneDisplay: "tekstit/yhteystiedot/08-puhelin-nakyva.txt",
+      phoneIntl: "tekstit/yhteystiedot/09-puhelin-linkki.txt",
     },
     defaults: {
       pageTitle: "Ota yhteyttä",
@@ -158,8 +158,8 @@ async function renderPageContent(page) {
 async function renderSharedHero() {
   const hero = await loadTextMap(
     {
-      companyName: "texts/shared-hero/title.txt",
-      subtitle: "texts/shared-hero/subtitle.txt",
+      companyName: "tekstit/vasen-palsta/01-toiminimen-otsikko.txt",
+      subtitle: "tekstit/vasen-palsta/02-alaotsikko.txt",
     },
     {
       companyName: "PSYKOTERAPIA MIELIKUVA",
