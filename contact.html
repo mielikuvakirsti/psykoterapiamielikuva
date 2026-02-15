@@ -14,56 +14,60 @@
       href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260215" />
     <link rel="preload" as="image" href="kuva.jpg" />
   </head>
   <body data-page="contact" class="content-loading">
     <main class="page">
-      <nav class="site-nav" aria-label="Paavalikko">
-        <div class="site-nav-inner">
-        <a href="index.html">Etusivu</a>
-        <a href="about.html">Tausta</a>
-        <a href="contact.html" aria-current="page">Yhteystiedot</a>
-        </div>
-      </nav>
+      <section class="layout">
+        <aside class="left-pane">
+          <nav class="site-nav" aria-label="Paavalikko">
+            <div class="site-nav-inner">
+              <a href="index.html">Etusivu</a>
+              <a href="about.html">Tausta</a>
+              <a href="contact.html" aria-current="page">Yhteystiedot</a>
+            </div>
+          </nav>
 
-      <section class="invitation">
-        <div class="hero">
-          <div class="brand">
-            <h1 id="company-name" class="hero-title">PSYKOTERAPIA MIELIKUVA</h1>
+          <div class="hero">
+            <div class="brand">
+              <h1 id="company-name" class="hero-title">PSYKOTERAPIA MIELIKUVA</h1>
+            </div>
+
+            <figure class="soft-image">
+              <img
+                id="hero-image"
+                src="kuva.jpg"
+                alt="Rauhallinen tunnelmakuva"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </figure>
+
+            <p id="page-subtitle" class="subtitle">Psykoterapiapalvelut Esimerkkikaupungissa</p>
           </div>
+        </aside>
 
-          <figure class="soft-image">
-            <img
-              id="hero-image"
-              src="kuva.jpg"
-              alt="Rauhallinen tunnelmakuva"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-            />
-          </figure>
+        <section class="right-pane">
+          <div class="content">
+            <h2 id="content-page-title" class="content-page-title">Ota yhteyttä</h2>
+            <div id="intro-text" class="intro" aria-live="polite"></div>
 
-          <p id="page-subtitle" class="subtitle">Psykoterapiapalvelut Esimerkkikaupungissa</p>
-        </div>
-
-        <div class="content">
-          <h2 id="content-page-title" class="content-page-title">Ota yhteyttä</h2>
-          <div id="intro-text" class="intro" aria-live="polite"></div>
-
-          <h2 class="section-title">Yhteystiedot</h2>
-          <address class="contact">
-            <p id="street"></p>
-            <p id="postal-city"></p>
-            <p id="opening-hours"></p>
-            <p>
-              <a id="email" href="#"></a>
-            </p>
-            <p>
-              <a id="phone" href="#"></a>
-            </p>
-          </address>
-        </div>
+            <h2 class="section-title">Yhteystiedot</h2>
+            <address class="contact">
+              <p id="street"></p>
+              <p id="postal-city"></p>
+              <p id="opening-hours"></p>
+              <p>
+                <a id="email" href="#"></a>
+              </p>
+              <p>
+                <a id="phone" href="#"></a>
+              </p>
+            </address>
+          </div>
+        </section>
       </section>
     </main>
     <script src="script.js"></script>

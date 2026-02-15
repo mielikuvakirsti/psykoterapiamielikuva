@@ -91,20 +91,26 @@ const PAGE_CONFIGS = {
       introText: "tekstit/tietoa/02-leipateksti.txt",
       historyTitle: "tekstit/tietoa/03-osion-otsikko.txt",
       historyText: "tekstit/tietoa/04-osion-teksti.txt",
+      workTitle: "tekstit/tietoa/05-tyoskentelytapa-otsikko.txt",
+      workText: "tekstit/tietoa/06-tyoskentelytapa-teksti.txt",
     },
     defaults: {
       pageTitle: "Tausta ja työote",
       introText: "",
       historyTitle: "Tausta ja koulutus",
       historyText: "",
+      workTitle: "Tyoskentelytapani",
+      workText: "",
     },
     textTargets: [
       ["content-page-title", "pageTitle"],
       ["about-history-title", "historyTitle"],
+      ["about-work-title", "workTitle"],
     ],
     paragraphTextTargets: [
       ["intro-text", "introText"],
       ["about-history-text", "historyText"],
+      ["about-work-text", "workText"],
     ],
   },
   contact: {
