@@ -165,7 +165,7 @@ async function renderSharedHero() {
     },
     {
       companyName: "PSYKOTERAPIA MIELIKUVA",
-      subtitle: "Psykoterapiapalvelut",
+      subtitle: "Psykoterapiapalvelut Kuopiossa",
     },
   );
 
