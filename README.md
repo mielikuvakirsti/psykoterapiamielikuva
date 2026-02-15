@@ -19,6 +19,8 @@ Muokkaa vain `tekstit/`-kansion tiedostoja.
 - `tekstit/tietoa/`: Tietoa-sivun oikean palstan tekstit
 - `tekstit/yhteystiedot/`: Yhteystiedot-sivun oikean palstan tekstit
 - Tiedostot on numeroitu (`01-`, `02-`, `03-`...) samassa jarjestyksessa kuin ne naytetaan sivulla.
+- Leipatekstit ovat nyt omissa tiedostoissa (`02-leipateksti.txt`, `04-osion-teksti.txt`).
+- Voit lisata uuden kappaleen jattamalla tekstiin tyhjan rivin kappaleiden valiin.
 
 ## Tarkeaa
 

@@ -19,6 +19,13 @@ function setText(id, value) {
   if (el) el.textContent = value || "";
 }
 
+function textToParagraphs(text) {
+  return (text || "")
+    .split(/\n\s*\n/g)
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
+
 function renderParagraphs(containerId, paragraphs) {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -69,59 +76,51 @@ const PAGE_CONFIGS = {
   home: {
     files: {
       pageTitle: "tekstit/etusivu/01-sivun-otsikko.txt",
-      intro1: "tekstit/etusivu/02-kappale-1.txt",
-      intro2: "tekstit/etusivu/03-kappale-2.txt",
+      introText: "tekstit/etusivu/02-leipateksti.txt",
     },
     defaults: {
       pageTitle: "Tervetuloa",
-      intro1: "",
-      intro2: "",
+      introText: "",
     },
     textTargets: [["content-page-title", "pageTitle"]],
-    paragraphTargets: [["intro-text", ["intro1", "intro2"]]],
+    paragraphTextTargets: [["intro-text", "introText"]],
   },
   about: {
     files: {
       pageTitle: "tekstit/tietoa/01-sivun-otsikko.txt",
-      intro1: "tekstit/tietoa/02-kappale-1.txt",
-      intro2: "tekstit/tietoa/03-kappale-2.txt",
-      historyTitle: "tekstit/tietoa/04-osion-otsikko.txt",
-      history1: "tekstit/tietoa/05-kappale-3.txt",
-      history2: "tekstit/tietoa/06-kappale-4.txt",
+      introText: "tekstit/tietoa/02-leipateksti.txt",
+      historyTitle: "tekstit/tietoa/03-osion-otsikko.txt",
+      historyText: "tekstit/tietoa/04-osion-teksti.txt",
     },
     defaults: {
       pageTitle: "Tausta ja työote",
-      intro1: "",
-      intro2: "",
+      introText: "",
       historyTitle: "Tausta ja koulutus",
-      history1: "",
-      history2: "",
+      historyText: "",
     },
     textTargets: [
       ["content-page-title", "pageTitle"],
       ["about-history-title", "historyTitle"],
     ],
-    paragraphTargets: [
-      ["intro-text", ["intro1", "intro2"]],
-      ["about-history-text", ["history1", "history2"]],
+    paragraphTextTargets: [
+      ["intro-text", "introText"],
+      ["about-history-text", "historyText"],
     ],
   },
   contact: {
     files: {
       pageTitle: "tekstit/yhteystiedot/01-sivun-otsikko.txt",
-      intro1: "tekstit/yhteystiedot/02-kappale-1.txt",
-      intro2: "tekstit/yhteystiedot/03-kappale-2.txt",
-      street: "tekstit/yhteystiedot/04-katuosoite.txt",
-      postalCity: "tekstit/yhteystiedot/05-postinumero-ja-kaupunki.txt",
-      openingHours: "tekstit/yhteystiedot/06-ajanvaraus.txt",
-      email: "tekstit/yhteystiedot/07-sahkoposti.txt",
-      phoneDisplay: "tekstit/yhteystiedot/08-puhelin-nakyva.txt",
-      phoneIntl: "tekstit/yhteystiedot/09-puhelin-linkki.txt",
+      introText: "tekstit/yhteystiedot/02-leipateksti.txt",
+      street: "tekstit/yhteystiedot/03-katuosoite.txt",
+      postalCity: "tekstit/yhteystiedot/04-postinumero-ja-kaupunki.txt",
+      openingHours: "tekstit/yhteystiedot/05-ajanvaraus.txt",
+      email: "tekstit/yhteystiedot/06-sahkoposti.txt",
+      phoneDisplay: "tekstit/yhteystiedot/07-puhelin-nakyva.txt",
+      phoneIntl: "tekstit/yhteystiedot/08-puhelin-linkki.txt",
     },
     defaults: {
       pageTitle: "Ota yhteyttä",
-      intro1: "",
-      intro2: "",
+      introText: "",
       street: "",
       postalCity: "",
       openingHours: "",
@@ -130,7 +129,7 @@ const PAGE_CONFIGS = {
       phoneIntl: "",
     },
     textTargets: [["content-page-title", "pageTitle"]],
-    paragraphTargets: [["intro-text", ["intro1", "intro2"]]],
+    paragraphTextTargets: [["intro-text", "introText"]],
     hasContact: true,
   },
 };
@@ -143,11 +142,8 @@ async function renderPageContent(page) {
     setText(id, content[key]);
   }
 
-  for (const [containerId, keys] of config.paragraphTargets || []) {
-    renderParagraphs(
-      containerId,
-      keys.map((key) => content[key]),
-    );
+  for (const [containerId, key] of config.paragraphTextTargets || []) {
+    renderParagraphs(containerId, textToParagraphs(content[key]));
   }
 
   if (config.hasContact) {
